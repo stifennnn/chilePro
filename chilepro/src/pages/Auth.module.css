@@ -1,0 +1,94 @@
+/* src/pages/Auth.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Un fondo gris claro */
+  }
+  
+  .formContainer {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+  }
+  
+  .title {
+    text-align: center;
+    color: #ff4d4d; /* El acento rojo */
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .input, .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #d63939;
+  }
+  
+  .signupLink, .loginLink {
+    margin-top: 20px;
+    text-align: center;
+    color: #555;
+  }
+  
+  .link {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .backLink {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    color: #777;
+    text-decoration: none;
+  }
+  
+  .backLink:hover {
+    text-decoration: underline;
+  }

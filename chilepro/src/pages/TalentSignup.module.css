@@ -1,0 +1,230 @@
+/* src/pages/TalentSignup.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Fondo general */
+    padding: 30px;
+}
+
+.formContainer {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 900px;
+    max-width: 95%;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 2.2rem;
+}
+
+.progressBar {
+    width: 100%;
+    background-color: #e0e0e0; /* Fondo de la barra de progreso */
+    border-radius: 5px;
+    height: 8px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Asegura que el relleno se recorte correctamente */
+}
+
+.progressFill {
+    background-color: #ff4d4d; /* Relleno de la barra de progreso - color primario */
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Aumentamos el espacio entre las secciones del formulario */
+}
+
+.section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.sectionTitle {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    /*border-bottom: 2px solid #ff4d4d;*/
+}
+
+.sectionContent {
+    padding: 15px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Espacio entre los elementos del grid */
+    margin-bottom: 15px;
+}
+
+.gridItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.gridItemFull {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.input, .textarea, .fileInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 12px; /* Aumentamos el espacio debajo de los inputs */
+}
+
+.input:focus, .textarea:focus {
+    outline: none;
+    border-color: #ff4d4d; /* Color primario al enfocar */
+    box-shadow: 0 0 3px rgba(255, 77, 77, 0.3);
+}
+
+.inputError {
+    border-color: #d9534f; /* Rojo para el error */
+}
+
+.error {
+    color: #d9534f; /* Rojo para el mensaje de error */
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.textarea {
+    min-height: 120px;
+}
+
+.submitButton, .addButton, .removeButton {
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 20px;
+}
+
+.submitButton {
+    background-color: #ff4d4d; /* Color primario para el botón de submit */
+}
+
+.addButton {
+    background-color: #5cb85c; /* Color secundario para añadir */
+    margin-top: 10px;
+}
+
+.removeButton {
+    background-color: #d9534f; /* Rojo para eliminar */
+    margin-top: 5px;
+    color: white; /* Texto blanco para mejor contraste en el botón rojo */
+}
+
+.submitButton:hover {
+    background-color: #d63939;
+}
+
+.addButton:hover {
+    background-color: #4cae4c;
+}
+
+.removeButton:hover {
+    background-color: #c9302c;
+}
+
+.submitButton:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+    color: #999;
+}
+
+.link, .backLink {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover, .backLink:hover {
+    text-decoration: underline;
+}
+
+.backLink {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    color: #777;
+}
+
+.footerText {
+    text-align: center;
+    color: #777;
+    margin-top: 15px;
+}
+
+.nestedSection {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.nestedTitle {
+    color: #555;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.arrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    transition: transform 0.2s ease-in-out;
+    margin-left: 5px;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.arrowDown {
+    transform: rotate(0deg);
+}
