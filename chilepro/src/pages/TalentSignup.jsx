@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './TalentSignup.module.css';
+import { auth, db } from '../firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { collection, doc, setDoc } from 'firebase/firestore';
 
 const sectionsConfig = [
   { id: 'personalInfo', title: 'Información Personal', fields: ['name', 'email', 'password', 'confirmPassword'] },
@@ -29,6 +32,7 @@ function TalentSignup() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completedSections, setCompletedSections] = useState(new Set());
+  const navigate = useNavigate();
 
   const validateField = (name, value, sectionId) => {
     const newErrors = { ...errors };
@@ -116,15 +120,45 @@ function TalentSignup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-    console.log('Form Data:', formData);
-    setIsSubmitting(false);
+    setErrors({});
+
+    if (Object.keys(errors).length > 0) {
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+
+      const talentProfileRef = doc(collection(db, 'talentProfiles'), user.uid);
+      await setDoc(talentProfileRef, {
+        name: formData.name,
+        email: formData.email,
+        profession: formData.profession,
+        headline: formData.headline,
+        skills: formData.skills.split(',').map(skill => skill.trim()),
+        experience: formData.experience,
+        education: formData.education,
+        portfolioUrl: formData.portfolioUrl,
+        projects: formData.projects,
+        uid: user.uid,
+      });
+
+      console.log('Perfil de talento registrado con éxito:', user.uid);
+      setIsSubmitting(false);
+      navigate('/');
+    } catch (error) {
+      console.error('Error al registrar el perfil de talento:', error.message);
+      setErrors({ auth: error.message });
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
     const newCompletedSections = new Set();
     sectionsConfig.forEach(section => {
-      if (section.id === 'personalInfo' && formData.name && formData.email && formData.password && formData.confirmPassword && Object.keys(errors).length === 0) {
+      if (section.id === 'personalInfo' && formData.name && formData.email && formData.password && formData.confirmPassword && !errors.email && !errors.password && !errors.confirmPassword) {
         newCompletedSections.add(section.id);
       } else if (section.id === 'professionalProfile' && formData.profession && formData.headline && formData.skills) {
         newCompletedSections.add(section.id);
@@ -148,6 +182,7 @@ function TalentSignup() {
         <div className={styles.progressBar}>
           <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
         </div>
+        {errors.auth && <p className={styles.error}>{errors.auth}</p>}
         <form onSubmit={handleSubmit} className={styles.form}>
           {sectionsConfig.map((section) => (
             <div key={section.id} className={styles.section}>
