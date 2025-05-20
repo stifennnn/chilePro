@@ -1,4 +1,3 @@
-/* src/pages/LandingPage.module.css */
 .container {
     display: flex;
     justify-content: center;
@@ -18,12 +17,12 @@
     align-items: center;
     text-align: center;
     padding: 40px;
-    border-radius: 10px; /* Bordes redondeados para el overlay */
+    border-radius: 10px; 
   }
   
   .title {
     font-size: 4rem;
-    color: #ff4d4d; /* Rojo similar al de la imagen */
+    color: #ff4d4d;
     margin-bottom: 10px;
     font-weight: bold;
   }
