@@ -1,11 +1,10 @@
-// src/routes/AppRouter.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Home from '../pages/Home';
-import TalentSignup from '../pages/TalentSignup'; // Importa el nuevo componente
+import TalentSignup from '../pages/TalentSignup'; 
 
 function AppRouter() {
   return (
