@@ -1,6 +1,5 @@
-// src/pages/LandingPage.jsx
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa el componente Link
+import { Link } from 'react-router-dom'; 
 import styles from './LandingPage.module.css';
 import backgroundImage from '../assets/Home.png';
 
